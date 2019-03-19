@@ -1,6 +1,7 @@
 [![Icon](https://github.com/JeffResc/Meteoroid/raw/master/meteoroidprefs/Resources/iconlarge%402x.png)](#)
 # Meteoroid
 Set your wallpaper from various NASA sources
+Confirmed to be working on iOS 11 and 12.
 
 Sources Include:
 - [NASA (Image of the Day)](https://www.nasa.gov/multimedia/imagegallery/iotd.html)
