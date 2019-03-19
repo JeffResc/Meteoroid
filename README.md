@@ -14,6 +14,8 @@ Features:
 - If you really like that wallpaper you got, save it with the button in settings
 - Manually update the wallpaper if you like
 
+[Download Meteoroid for Free from the Dynastic Repo](https://repo.dynastic.co/package/com.jeffresc.meteoroid)
+
 **Please Note**: This is a fork of the project [Stellae](https://github.com/LacertosusRepo/Open-Source-Tweaks/tree/master/Stellae) by [LacertosusDeus](https://twitter.com/lacertosusdeus). [View Stellae on Packix](https://repo.packix.com/package/com.lacertosusrepo.stellae/). Stellae allows you to get your favorite subreddit's hot posts and set them as your daily wallpaper.
 # Changelog
 ## v1.0
