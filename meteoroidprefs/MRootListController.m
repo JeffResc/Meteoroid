@@ -171,4 +171,7 @@
 	-(void)spaceX {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.flickr.com/people/spacex/"] options:@{} completionHandler:nil];
 	}
+	-(void)spaceCOM {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.space.com/topics/daily-space-images-archive/"] options:@{} completionHandler:nil];
+	}
 @end
