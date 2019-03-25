@@ -1,13 +1,7 @@
 PACKAGE_VERSION = 1.0.1
 DEBUG = 0
-export ARCHS = arm64
-export SDKVERSION = 11.2
-THEOS_DEVIVE_IP = 10.0.0.6
+ARCHS = armv7 arm64
 INSTALL_TARGET_PROCESSES = SpringBoard
-
-# Simject
-# export ARCHS = x86_64
-# TARGET = simulator:clang::7.0
 
 include $(THEOS)/makefiles/common.mk
 
