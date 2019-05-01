@@ -72,7 +72,6 @@
 				<string>NASA (EO)</string>
 				<string>NASA (APOD)</string>
 				<string>SpaceX</string>
-				<string>Space.com</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -80,7 +79,6 @@
 				<string>2</string>
 				<string>3</string>
 				<string>4</string>
-				<string>5</string>
 			</array>
 			<key>id</key>
 			<string>ModeCell</string>
@@ -152,7 +150,22 @@
 			<key>label</key>
 			<string>Save Wallpaper</string>
 		</dict>
-
+		<dict>
+			<key>label</key>
+			<string>Statistics</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>viewStats</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>MButtonCell</string>
+			<key>label</key>
+			<string>View Statistics</string>
+		</dict>
 		<dict>
 			<key>label</key>
 			<string>View Image Sources</string>
@@ -198,16 +211,6 @@
 			<string>MButtonCell</string>
 			<key>label</key>
 			<string>SpaceX (Official SpaceX Photos via Flickr)</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>spaceCOM</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>label</key>
-			<string>Space.com Image of the Day</string>
 		</dict>
 		<dict>
 			<key>label</key>

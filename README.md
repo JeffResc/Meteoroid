@@ -24,3 +24,5 @@ Features:
 Initial Release
 ## v1.0.1
 Added support for [Space.com](https://www.space.com/topics/daily-space-images-archive/)
+## v1.0.2
+Added support for A12/arm64e and armv7. Also removed [Space.com](https://www.space.com/topics/daily-space-images-archive/) Source due to API complications.
