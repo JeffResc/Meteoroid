@@ -8,7 +8,6 @@ Sources Include:
 - [NASA (Earth Observatory)](https://earthobservatory.nasa.gov/topic/image-of-the-day)
 - [NASA (Astronomy Picture of the Day)](https://science.nasa.gov/astronomy-picture-of-the-day)
 - [SpaceX (Official SpaceX Photos via Flickr)](https://www.flickr.com/people/spacex/)
-- [Space.com Image of the Day](https://www.space.com/topics/daily-space-images-archive/)
 
 Features:
 - Set where the image is applied to (Homescreen, Lockscreen, or both)
