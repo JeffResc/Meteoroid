@@ -10,7 +10,7 @@ before_install:
   - brew install dpkg ldid
   - wget https://qwertyuiop1379.github.io/iPhoneOS11.2.sdk.zip
   - git clone --recursive git://github.com/theos/theos.git ~/theos
-  - unzip iPhoneOS11.2.sdk.zip -d ~/theos/sdks
+  - unzip iPhoneOS11.2.sdk.zip -d ~/theos/sdks/iPhoneOS11.2.sdk
 script:
   - "export SYSROOT=~/theos/sdks/iPhoneOS11.2.sdk/"
   - "export VERSION=$(grep 'Version: ' control | sed 's/^.*: //')"
