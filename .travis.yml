@@ -6,13 +6,13 @@ env:
   global:
   - THEOS=~/theos
 before_install:
-  - export SYSROOT = ~/theos/sdks/iPhoneOS11.2.sdk/
   - brew update
   - brew install dpkg ldid
   - wget https://qwertyuiop1379.github.io/iPhoneOS11.2.sdk.zip
   - git clone --recursive git://github.com/theos/theos.git ~/theos
   - unzip iPhoneOS11.2.sdk.zip -d ~/theos/sdks
 script:
+  - "export SYSROOT = ~/theos/sdks/iPhoneOS11.2.sdk/"
   - "export VERSION=$(grep 'Version: ' control | sed 's/^.*: //')"
   - "export DESCRIPTION=$(awk '/## v$VERSION/{getline; print}' README.md)"
   - "export FILENAME='packages/'\"$(grep 'Package: ' control | sed 's/^.*: //')\"'_'\"$VERSION\"'_iphoneos-arm.deb'"
