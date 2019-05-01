@@ -5,8 +5,8 @@ sudo: false
 env:
   global:
   - THEOS=~/theos
-  - SYSROOT = ~/theos/sdks/iPhoneOS11.2.sdk/
 before_install:
+  - export SYSROOT = ~/theos/sdks/iPhoneOS11.2.sdk/
   - brew update
   - brew install dpkg ldid
   - wget https://qwertyuiop1379.github.io/iPhoneOS11.2.sdk.zip
