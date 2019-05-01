@@ -1,7 +1,7 @@
 PACKAGE_VERSION = 1.0.2
 DEBUG = 0
 export SDKVERSION = 11.2
-export ARCHS = arm64 arm64e armv7
+export ARCHS = arm64 arm64e
 THEOS_DEVIVE_IP = 10.0.0.6
 INSTALL_TARGET_PROCESSES = SpringBoard
 
