@@ -5,6 +5,7 @@ sudo: false
 env:
   global:
   - THEOS=~/theos
+  - SYSROOT = ~/theos/sdks/iPhoneOS11.2.sdk/
 before_install:
   - brew update
   - brew install dpkg ldid
