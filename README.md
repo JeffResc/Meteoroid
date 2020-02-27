@@ -3,6 +3,8 @@
 Set your wallpaper from various NASA sources
 Confirmed to be working on iOS 11 and 12.
 
+Please note that Meteoroid only supports iOS 11.
+
 Sources Include:
 - [NASA (Image of the Day)](https://www.nasa.gov/multimedia/imagegallery/iotd.html)
 - [NASA (Earth Observatory)](https://earthobservatory.nasa.gov/topic/image-of-the-day)
@@ -25,3 +27,5 @@ Initial Release
 Added support for [Space.com](https://www.space.com/topics/daily-space-images-archive/)
 ## v1.0.2
 Added support for A12/arm64e. Also removed [Space.com](https://www.space.com/topics/daily-space-images-archive/) Source due to API complications.
+## v1.0.3
+Fixed darkmode setting.
