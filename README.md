@@ -29,3 +29,5 @@ Added support for [Space.com](https://www.space.com/topics/daily-space-images-ar
 Added support for A12/arm64e. Also removed [Space.com](https://www.space.com/topics/daily-space-images-archive/) Source due to API complications.
 ## v1.0.3
 Fixed darkmode setting.
+## v1.0.4
+Updated the URL that images are downloaded from.

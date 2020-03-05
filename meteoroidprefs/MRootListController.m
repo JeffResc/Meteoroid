@@ -142,10 +142,10 @@
 	}
 
 	-(void)twitter {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/JeffResc_"] options:@{} completionHandler:nil];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/JeffRescignano"] options:@{} completionHandler:nil];
 	}
 	-(void)paypal {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://paypal.me/jrescig"] options:@{} completionHandler:nil];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://paypal.me/JeffRescignano"] options:@{} completionHandler:nil];
 	}
 	-(void)github {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/JeffResc/Meteoroid"] options:@{} completionHandler:nil];
@@ -170,8 +170,5 @@
 	}
 	-(void)spaceX {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.flickr.com/people/spacex/"] options:@{} completionHandler:nil];
-	}
-	-(void)viewStats {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://jeffresc.com/meteoroidstats/"] options:@{} completionHandler:nil];
 	}
 @end

@@ -1,4 +1,4 @@
-PACKAGE_VERSION = 1.0.3
+PACKAGE_VERSION = 1.0.4
 DEBUG = 0
 export SDKVERSION = 11.2
 export ARCHS = arm64 arm64e

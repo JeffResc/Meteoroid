@@ -152,22 +152,6 @@
 		</dict>
 		<dict>
 			<key>label</key>
-			<string>Statistics</string>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>viewStats</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>label</key>
-			<string>View Statistics</string>
-		</dict>
-		<dict>
-			<key>label</key>
 			<string>View Image Sources</string>
 			<key>cell</key>
 			<string>PSGroupCell</string>

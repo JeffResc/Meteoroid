@@ -28,7 +28,7 @@ static UIImage* getImageOfSpace() {
   if([imageSource isEqualToString:@""] || imageSource == nil) {
     imageSource = @"1";
   }
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://jeffresc.com/api/meteoroid.php?source=%@", imageSource]];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.jeffresc.dev/meteoroid?source=%@", imageSource]];
   NSData *data = [NSData dataWithContentsOfURL:url];
   NSError *error = nil;
   NSDictionary *dict;
