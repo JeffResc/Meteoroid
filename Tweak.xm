@@ -1,5 +1,7 @@
 #import <PhotoLibrary/PLStaticWallpaperImageViewController.h>
 #import "MeteoroidClasses.h"
+#import "NSTask.h"
+
 #define LD_DEBUG NO
 
   /*
@@ -13,44 +15,16 @@
    * Global variables
    */
   BOOL meteoroidInitalAlertShown;
-  BOOL shouldUpdateWallpaper;
   BOOL savedInitalWallpaper;
+  BOOL parallax;
+  BOOL timerEnabled;
   int timerInterval;
-  NSData *spaceImageData;
   NSString *currentImageURL;
   NSString *currentShownImageURL;
   PCSimpleTimer *timer;
   SBHomeScreenViewController *HomeScreenViewController;
 
   extern "C" CFArrayRef CPBitmapCreateImagesFromData(CFDataRef cpbitmap, void*, int, void*);
-
-static UIImage* getImageOfSpace() {
-  if([imageSource isEqualToString:@""] || imageSource == nil) {
-    imageSource = @"1";
-  }
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.jeffresc.dev/meteoroid?source=%@", imageSource]];
-  NSData *data = [NSData dataWithContentsOfURL:url];
-  NSError *error = nil;
-  NSDictionary *dict;
-  if(data == nil) {
-    return nil;
-  } else {
-    dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-  }
-  NSMutableDictionary *saveddata = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/User/Library/Preferences/com.jeffresc.meteoroidsaveddata.plist"];
-
-  NSString *imageURL = dict[@"imageURL"];
-  NSString *imageView = dict[@"imageView"];
-
-  [saveddata setObject:imageURL forKey:@"currentImageURL"];
-  [saveddata setObject:imageView forKey:@"currentShownImageURL"];
-  [saveddata writeToFile:@"/User/Library/Preferences/com.jeffresc.meteoroidsaveddata.plist" atomically:YES];
-
-  spaceImageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imageURL]];
-  UIImage *spaceImage = [UIImage imageWithData:spaceImageData];
-
-  return spaceImage;
-}
 
   /*
   * Shows inital alert after install. Allows user to save current wallpapers if they want
@@ -113,32 +87,33 @@ static UIImage* getImageOfSpace() {
    * https://github.com/tateu/TimerExample/blob/master/Tweak.xm
    */
   -(void)createTimer {
-    if(LD_DEBUG) {
-      timerInterval = 30;
-    } else {
-      timerInterval = 1800;
-    }
+    if (timerEnabled) {
+      if(LD_DEBUG) {
+        timerInterval = 30;
+      } else {
+        timerInterval = 1800;
+      }
 
-    if(timer) {
-      [timer invalidate];
-      [self.apolloTimer invalidate];
+      if(timer) {
+        [timer invalidate];
+        [self.apolloTimer invalidate];
 
-      timer = nil;
-      self.apolloTimer = nil;
-    }
+        timer = nil;
+        self.apolloTimer = nil;
+      }
 
-    timer = [[%c(PCSimpleTimer) alloc] initWithTimeInterval:timerInterval serviceIdentifier:@"com.jeffresc.meteoroid" target:self selector:@selector(setSpaceWallpaper) userInfo:nil];
-    timer.disableSystemWaking = NO;
-    [timer scheduleInRunLoop:[NSRunLoop mainRunLoop]];
-    self.apolloTimer = timer;
+      timer = [[%c(PCSimpleTimer) alloc] initWithTimeInterval:timerInterval serviceIdentifier:@"com.jeffresc.meteoroid" target:self selector:@selector(setSpaceWallpaper) userInfo:nil];
+      timer.disableSystemWaking = NO;
+      [timer scheduleInRunLoop:[NSRunLoop mainRunLoop]];
+      self.apolloTimer = timer;
 
-    if(LD_DEBUG) {
-      NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-      [dateFormatter setDateFormat:@"HH:mm:ss"];
-      NSLog(@"Timer - %@", timer);
-      NSLog(@"Timer isValid - %d", [timer isValid]);
-      NSLog(@"fireTime - %@", [dateFormatter stringFromDate:fireTime]);
-      NSLog(@"shouldUpdateWallpaper - %d", shouldUpdateWallpaper);
+      if(LD_DEBUG) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm:ss"];
+        NSLog(@"Timer - %@", timer);
+        NSLog(@"Timer isValid - %d", [timer isValid]);
+        NSLog(@"fireTime - %@", [dateFormatter stringFromDate:fireTime]);
+      }
     }
   }
 
@@ -155,24 +130,13 @@ static UIImage* getImageOfSpace() {
 		NSDateComponents *components = [calendar components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:[NSDate date]];
 		NSDate *currentDate = [calendar dateFromComponents:components];
 
-    if((([currentDate compare:fireTime] == NSOrderedDescending) && ([currentDate compare:fireTimeGate] == NSOrderedAscending)) || shouldUpdateWallpaper) {
-      UIImage *newWallpaper = getImageOfSpace();
-      shouldUpdateWallpaper = NO;
-
-      if(newWallpaper != nil) {
-        PLStaticWallpaperImageViewController *wallpaperViewController = [[[PLStaticWallpaperImageViewController alloc] initWithUIImage:newWallpaper] autorelease];
-        wallpaperViewController.saveWallpaperData = YES;
-        uintptr_t address = (uintptr_t)&wallpaperMode;
-        object_setInstanceVariable(wallpaperViewController, "_wallpaperMode", *(PLWallpaperMode **)address);
-        [wallpaperViewController _savePhoto];
-      } else {
-        NSLog(@"UIImage (newWallpaper) is empty!");
-      }
-
-    } if(![self.apolloTimer isValid]) {
+    if((([currentDate compare:fireTime] == NSOrderedDescending) && ([currentDate compare:fireTimeGate] == NSOrderedAscending))) {
+      CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.jeffresc.meteoroid-runCommand"), nil, nil, true);
+    }
+    if (![self.apolloTimer isValid]) {
       [self createTimer];
-
-    } if(LD_DEBUG) {
+    }
+    if(LD_DEBUG) {
       NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
       [dateFormatter setDateFormat:@"HH:mm:ss"];
       NSLog(@"fireTime - %@ || Current Date - %@ || fireTimeGate - %@", [dateFormatter stringFromDate:fireTime], [dateFormatter stringFromDate:currentDate], [dateFormatter stringFromDate:fireTimeGate]);
@@ -180,12 +144,34 @@ static UIImage* getImageOfSpace() {
   }
 %end
 
-  /*
-   * Simple function to manually update the wallpaper
-   */
-static void updateSpaceImage() {
-  shouldUpdateWallpaper = YES;
-  [HomeScreenViewController setSpaceWallpaper];
+/*
+ * Runs the update command using meteoroidcli
+ */
+static void runUpdateCommand() {
+  // Set locationFlag
+  char locationFlag;
+  switch (wallpaperMode) {
+    case 0:
+      locationFlag = 'b';
+      break;
+    case 1:
+      locationFlag = 'h';
+      break;
+    case 2:
+      locationFlag = 'l';
+      break;
+  }
+
+  // Run it through WallpaperChanger
+  NSTask *task = [[NSTask alloc] init];
+  [task setLaunchPath:@"/usr/bin/meteoroidcli"];
+  // Thank you to captinc and WallpaperChanger - https://github.com/captinc/WallpaperChanger
+  if (parallax) {
+    [task setArguments:[NSArray arrayWithObjects:@"-s", imageSource, [NSString stringWithFormat:@"-%c", locationFlag], @"-p", nil]];
+  } else {
+    [task setArguments:[NSArray arrayWithObjects:@"-s", imageSource, [NSString stringWithFormat:@"-%c", locationFlag], nil]];
+  }
+  [task launch];
 }
 
   /*
@@ -225,10 +211,12 @@ static void respring() {
 static void loadPrefs() {
   NSMutableDictionary *preferences = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/User/Library/Preferences/com.jeffresc.meteoroidprefs.plist"];
   NSMutableDictionary *saveddata = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/User/Library/Preferences/com.jeffresc.meteoroidsaveddata.plist"];
-  if(!preferences || [preferences count] < 2) {
+  if(!preferences || [preferences count] < 4) {
     preferences = [[NSMutableDictionary alloc] init];
     [preferences setObject:[NSNumber numberWithInt:2] forKey:@"wallpaperMode"];
     [preferences setObject:[NSNumber numberWithInt:1] forKey:@"imageSource"];
+    [preferences setObject:[NSNumber numberWithBool:0] forKey:@"parallax"];
+    [preferences setObject:[NSNumber numberWithBool:0] forKey:@"timerEnabled"];
     [preferences writeToFile:@"/User/Library/Preferences/com.jeffresc.meteoroidprefs.plist" atomically:YES];
   } if(!saveddata || [saveddata count] < 4) {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:[NSDate date]];
@@ -242,6 +230,8 @@ static void loadPrefs() {
   } else {
     wallpaperMode = [[preferences objectForKey:@"wallpaperMode"] intValue];
     imageSource = [preferences objectForKey:@"imageSource"];
+    parallax = [[preferences objectForKey:@"parallax"] boolValue];
+    timerEnabled = [[preferences objectForKey:@"timerEnabled"] boolValue];
     fireTime = [saveddata objectForKey:@"fireTime"];
     currentImageURL = [saveddata objectForKey:@"currentImageURL"];
     currentShownImageURL = [saveddata objectForKey:@"currentShownImageURL"];
@@ -257,11 +247,11 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
    * Setup notifications
    */
 %ctor {
-  NSAutoreleasePool *pool = [NSAutoreleasePool new];
-  loadPrefs();
-  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)nsNotificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
-  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)updateSpaceImage, CFSTR("com.jeffresc.meteoroidprefs-updateSpaceImage"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)saveImage, CFSTR("com.jeffresc.meteoroidprefs-saveImage"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)respring, CFSTR("com.jeffresc.meteoroidprefs-respring"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-  [pool release];
+  @autoreleasepool {
+    loadPrefs();
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)nsNotificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)runUpdateCommand, CFSTR("com.jeffresc.meteoroid-runCommand"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)saveImage, CFSTR("com.jeffresc.meteoroidprefs-saveImage"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)respring, CFSTR("com.jeffresc.meteoroidprefs-respring"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+  }
 }

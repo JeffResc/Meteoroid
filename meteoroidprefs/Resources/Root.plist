@@ -14,9 +14,9 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Set Wallpaper To</string>
+			<string>Wallpaper Options</string>
 			<key>footerText</key>
-			<string>Choose where the wallpaper is applied to.</string>
+			<string>Choose where the wallpaper is applied to and the parallax option.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -46,7 +46,32 @@
 			<key>PostNotification</key>
 			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
 		</dict>
-
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>defaults</key>
+			<string>com.jeffresc.meteoroidprefs</string>
+			<key>key</key>
+			<string>parallax</string>
+			<key>label</key>
+			<string>Set Parallax Options</string>
+			<key>default</key>
+			<string>Parallax Disabled</string>
+			<key>validTitles</key>
+			<array>
+				<string>Parallax Disabled</string>
+				<string>Parallax Enabled</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>0</string>
+				<string>1</string>
+			</array>
+			<key>id</key>
+			<string>ModeCell</string>
+			<key>PostNotification</key>
+			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
+		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -90,9 +115,35 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Refresh Time</string>
+			<string>Timer</string>
 			<key>footerText</key>
-			<string>Choose what time for the wallpaper to be updated. It can take up to an hour for the wallpaper to update due to limitations. If you have a limited data plan, it is recommended that you choose a time where your deivce is usually connected to an unmetered connection.</string>
+			<string>Choose what time for the wallpaper to be updated. It can take up to an hour for the wallpaper to update due to limitations. Choose a time where your deivce is usually connected to an unmetered connection. For more advanced options, see the "Advanced Use Cases" section on the package depiction page.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>defaults</key>
+			<string>com.jeffresc.meteoroidprefs</string>
+			<key>key</key>
+			<string>timerEnabled</string>
+			<key>label</key>
+			<string>Set Timer Options</string>
+			<key>default</key>
+			<string>Timer Disabled</string>
+			<key>validTitles</key>
+			<array>
+				<string>Timer Disabled</string>
+				<string>Timer Enabled</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>0</string>
+				<string>1</string>
+			</array>
+			<key>id</key>
+			<string>ModeCell</string>
+			<key>PostNotification</key>
+			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>

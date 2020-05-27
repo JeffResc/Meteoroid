@@ -1,7 +1,7 @@
 Package: com.jeffresc.meteoroid
 Name: Meteoroid
-Depends: mobilesubstrate
-Version: 1.0.4
+Depends: mobilesubstrate, firmware (>=11.0)
+Version: 1.0.5
 Architecture: iphoneos-arm
 Description: Set your wallpaper from various NASA sources
 Maintainer: JeffResc <jeff@jeffresc.dev>

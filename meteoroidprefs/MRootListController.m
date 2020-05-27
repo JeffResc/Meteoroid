@@ -103,7 +103,7 @@
 																			message:@"Are you sure you want to update the wallpaper? You can't save it once its changed!"
 																			preferredStyle:UIAlertControllerStyleAlert];
 		UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
-				CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.jeffresc.meteoroidprefs-updateSpaceImage"), nil, nil, true);
+				CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.jeffresc.meteoroid-runCommand"), nil, nil, true);
 		}];
 		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
 		[updateImageAlert addAction:confirmAction];
