@@ -21,7 +21,8 @@ Features:
 - If you really like that wallpaper you got, save it with the button in settings
 - Manually update the wallpaper if you like
 
-[Download Meteoroid for Free from the Dynastic Repo](https://repo.dynastic.co/package/com.jeffresc.meteoroid)
+## Downloading and Installing
+You can either [Download Meteoroid for Free from the Dynastic Repo](https://repo.dynastic.co/package/com.jeffresc.meteoroid), or download and install it manually using the .deb file, which can be downloaded from the [GitHub releases section](https://github.com/JeffResc/Meteoroid/releases).
 
 # Advanced Usage
 ### Command Usage
