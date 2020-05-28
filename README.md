@@ -2,7 +2,7 @@
 Set your wallpaper from various NASA sources.
 [View the video demo](https://imgur.com/a/JU8YzfV).
 
-[![Banner](https://github.com/JeffResc/Meteoroid/raw/master/_assets/BannerWithText.png)](#)
+[![Banner](https://github.com/JeffResc/Meteoroid/raw/master/_assets/Banners/BannerWithText.png)](#)
 
 Compatible with iOS 11 - 13.
 
@@ -10,7 +10,13 @@ Sources Include:
 - [NASA (Image of the Day)](https://www.nasa.gov/multimedia/imagegallery/iotd.html)
 - [NASA (Earth Observatory)](https://earthobservatory.nasa.gov/topic/image-of-the-day)
 - [NASA (Astronomy Picture of the Day)](https://science.nasa.gov/astronomy-picture-of-the-day)
-- [SpaceX (Official SpaceX Photos via Flickr)](https://www.flickr.com/people/spacex/)
+- [SpaceX Flickr](https://www.flickr.com/photos/spacex/)
+- [NASA HQ Flickr](https://www.flickr.com/photos/nasahqphoto/)
+- [NASA JPL Flickr](https://www.flickr.com/photos/nasa-jpl/)
+- [NASA Johnson Flickr](https://www.flickr.com/photos/nasa2explore/)
+- [NASA Kennedy Flickr](https://www.flickr.com/photos/nasakennedy/)
+- [NASA Goddard Flickr](https://www.flickr.com/photos/gsfc/)
+- [NASA Marshall Flickr](https://www.flickr.com/photos/nasamarshall/)
 
 Features:
 - Set where the image is applied to (homescreen, lockscreen, or both)
@@ -51,5 +57,3 @@ meteoroidcli -s 2 -h -p
 
 # Changelog
 The changelog has been moved to the [releases tab](https://github.com/JeffResc/Meteoroid/releases).
-
-**Please Note**: This is a fork of the project [Stellae](https://github.com/LacertosusRepo/Open-Source-Tweaks/tree/master/Stellae) by [LacertosusDeus](https://twitter.com/lacertosusdeus). [View Stellae on Packix](https://repo.packix.com/package/com.lacertosusrepo.stellae/). Stellae allows you to get your favorite subreddit's hot posts and set them as your daily wallpaper.

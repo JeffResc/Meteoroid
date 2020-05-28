@@ -8,27 +8,27 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>headerCellClass</key>
-			<string>MCustomHeaderCell</string>
+			<string>MeteoroidTitleCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Wallpaper Options</string>
-			<key>footerText</key>
-			<string>Choose where the wallpaper is applied to and the parallax option.</string>
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSSegmentCell</string>
-			<key>defaults</key>
-			<string>com.jeffresc.meteoroidprefs</string>
-			<key>key</key>
-			<string>wallpaperMode</string>
-			<key>label</key>
-			<string>Set Image To</string>
-			<key>default</key>
-			<string>Lockscreen</string>
+	    <key>cell</key>
+	    <string>PSLinkListCell</string>
+	    <key>default</key>
+	    <string>Lockscreen</string>
+	    <key>defaults</key>
+	    <string>com.jeffresc.meteoroidprefs</string>
+	    <key>key</key>
+	    <string>wallpaperMode</string>
+	    <key>label</key>
+	    <string>Wallpaper Location</string>
+	    <key>detail</key>
+	    <string>PSListItemsController</string>
 			<key>validTitles</key>
 			<array>
 				<string>Both</string>
@@ -41,22 +41,22 @@
 				<string>1</string>
 				<string>2</string>
 			</array>
-			<key>id</key>
-			<string>ModeCell</string>
 			<key>PostNotification</key>
-			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
+			<string>com.jeffresc.meteoroidprefs-loadPrefs</string>
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSSegmentCell</string>
-			<key>defaults</key>
-			<string>com.jeffresc.meteoroidprefs</string>
-			<key>key</key>
-			<string>parallax</string>
-			<key>label</key>
-			<string>Set Parallax Options</string>
-			<key>default</key>
-			<string>Parallax Disabled</string>
+	    <key>cell</key>
+	    <string>PSLinkListCell</string>
+	    <key>default</key>
+	    <string>Parallax Disabled</string>
+	    <key>defaults</key>
+	    <string>com.jeffresc.meteoroidprefs</string>
+	    <key>key</key>
+	    <string>parallax</string>
+	    <key>label</key>
+	    <string>Parallax</string>
+	    <key>detail</key>
+	    <string>PSListItemsController</string>
 			<key>validTitles</key>
 			<array>
 				<string>Parallax Disabled</string>
@@ -67,36 +67,34 @@
 				<string>0</string>
 				<string>1</string>
 			</array>
-			<key>id</key>
-			<string>ModeCell</string>
 			<key>PostNotification</key>
-			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
+			<string>com.jeffresc.meteoroidprefs-loadPrefs</string>
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Set Image Source</string>
-			<key>footerText</key>
-			<string>Set the source that images are imported from. You can view these sources in the "View Image Sources" section.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSegmentCell</string>
-			<key>defaults</key>
-			<string>com.jeffresc.meteoroidprefs</string>
-			<key>key</key>
-			<string>imageSource</string>
-			<key>label</key>
-			<string>Set Image Source</string>
-			<key>default</key>
-			<string>NASA (IOTD)</string>
+	    <key>cell</key>
+	    <string>PSLinkListCell</string>
+	    <key>default</key>
+	    <string>NASA (IOTD)</string>
+	    <key>defaults</key>
+	    <string>com.jeffresc.meteoroidprefs</string>
+	    <key>key</key>
+	    <string>imageSource</string>
+	    <key>label</key>
+	    <string>Set Image Source</string>
+	    <key>detail</key>
+	    <string>PSListItemsController</string>
 			<key>validTitles</key>
 			<array>
-				<string>NASA (IOTD)</string>
-				<string>NASA (EO)</string>
-				<string>NASA (APOD)</string>
-				<string>SpaceX</string>
+				<string>NASA (Image of the Day)</string>
+				<string>NASA (Earth Observatory)</string>
+				<string>NASA (Astronomy Picture of the Day)</string>
+				<string>SpaceX Flickr</string>
+				<string>NASA HQ Flickr</string>
+				<string>NASA JPL Flickr</string>
+				<string>NASA Johnson Flickr</string>
+				<string>NASA Kennedy Flickr</string>
+				<string>NASA Goddard Flickr</string>
+				<string>NASA Marshall Flickr</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -104,13 +102,16 @@
 				<string>2</string>
 				<string>3</string>
 				<string>4</string>
+				<string>5</string>
+				<string>6</string>
+				<string>7</string>
+				<string>8</string>
+				<string>9</string>
+				<string>10</string>
 			</array>
-			<key>id</key>
-			<string>ModeCell</string>
 			<key>PostNotification</key>
-			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
+			<string>com.jeffresc.meteoroidprefs-loadPrefs</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -143,25 +144,15 @@
 			<key>id</key>
 			<string>ModeCell</string>
 			<key>PostNotification</key>
-			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
+			<string>com.jeffresc.meteoroidprefs-loadPrefs</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
 			<string>MTimePickerCell</string>
 			<key>PostNotification</key>
-			<string>com.jeffresc.meteoroidprefs/preferences.changed</string>
+			<string>com.jeffresc.meteoroidprefs-loadPrefs</string>
 			<key>height</key>
 			<real>100</real>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>openCurrentImageSource</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>label</key>
-			<string>Open Current Wallpaper</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -169,37 +160,31 @@
 			<key>label</key>
 			<string>Actions</string>
 			<key>footerText</key>
-			<string>Respring, update the current wallpaper or save the current wallpaper.</string>
+			<string>Select an action above to manage wallpaper actions.</string>
 		</dict>
 		<dict>
 			<key>action</key>
-			<string>respring</string>
+			<string>openCurrentImageSource</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
-			<string>Respring</string>
+			<string>Open Current Wallpaper</string>
 		</dict>
 		<dict>
 			<key>action</key>
 			<string>updateSpaceImage</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
-			<string>Update Wallpaper</string>
+			<string>Manually Update Wallpaper</string>
 		</dict>
 		<dict>
 			<key>action</key>
 			<string>saveImage</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
-			<string>Save Wallpaper</string>
+			<string>Save Wallpaper(s)</string>
 		</dict>
 		<dict>
 			<key>label</key>
@@ -208,131 +193,157 @@
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>nasaIOTD</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
 			<string>NASA (Image of the Day)</string>
+			<key>action</key>
+			<string>NASA_IOTD_Link</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>nasaEO</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
 			<string>NASA (Earth Observatory)</string>
+			<key>action</key>
+			<string>NASA_EO_Link</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>nasaAPOD</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
 			<string>NASA (Astronomy Picture of the Day)</string>
+			<key>action</key>
+			<string>NASA_APoD_Link</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>spaceX</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
 			<key>label</key>
-			<string>SpaceX (Official SpaceX Photos via Flickr)</string>
+			<string>SpaceX Flickr</string>
+			<key>action</key>
+			<string>Flickr_SpaceX_Link</string>
 		</dict>
 		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Meteoroid by JeffResc</string>
+			<string>NASA HQ Flickr</string>
+			<key>action</key>
+			<string>Flickr_NASA_HQ_Link</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>NASA JPL Flickr</string>
+			<key>action</key>
+			<string>Flickr_NASA_JPL</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>NASA Johnson Flickr</string>
+			<key>action</key>
+			<string>Flickr_NASA_Johnson_Link</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>NASA Kennedy Flickr</string>
+			<key>action</key>
+			<string>Flickr_NASA_Kennedy_Link</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>NASA Goddard Flickr</string>
+			<key>action</key>
+			<string>Flickr_NASA_Goddard_Link</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>NASA Marshall Flickr</string>
+			<key>action</key>
+			<string>Flickr_NASA_Marshall_Link</string>
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>About</string>
 		</dict>
 		<dict>
+			<key>big</key>
+			<true/>
+			<key>cellClass</key>
+			<string>HBTwitterCell</string>
+			<key>height</key>
+			<integer>56</integer>
+			<key>label</key>
+			<string>Jeff Rescignano</string>
+			<key>user</key>
+			<string>JeffRescignano</string>
 			<key>action</key>
-			<string>github</string>
+			<string>Twitter_Profile_Link</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>icon</key>
-			<string>github.png</string>
 			<key>label</key>
-			<string>Github</string>
+			<string>Donate 💵</string>
+			<key>action</key>
+			<string>PayPal_Donate_Link</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>twitter</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>icon</key>
-			<string>twitter.png</string>
 			<key>label</key>
-			<string>Twitter</string>
+			<string>Source Code 📁</string>
+			<key>action</key>
+			<string>GitHub_Source_Code_Link</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>paypal</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>icon</key>
-			<string>paypal.png</string>
 			<key>label</key>
-			<string>Donate</string>
-		</dict>
-		<dict>
-			<key>label</key>
-			<string>Based on Stellae by LacertpsusDues</string>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
+			<string>Package Information ℹ️</string>
 			<key>action</key>
-			<string>github2</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>icon</key>
-			<string>github.png</string>
-			<key>label</key>
-			<string>Github</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>twitter2</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>icon</key>
-			<string>twitter.png</string>
-			<key>label</key>
-			<string>Twitter</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>paypal2</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>MButtonCell</string>
-			<key>icon</key>
-			<string>paypal.png</string>
-			<key>label</key>
-			<string>Donate</string>
+			<string>Dynastic_Depiction_Page_Link</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string></string>
+	<string>Meteoroid</string>
 </dict>
 </plist>

@@ -66,10 +66,7 @@ void setWallpaper(int source, int location, bool parallax) {
 void displayUsage() {
     printf("Usage: meteoroidcli [source #] [location to set] [parallax on/off]\n");
     printf("       -s\tSet the image source\n");
-    printf("       Source 1: NASA (IOTD)\n");
-    printf("       Source 2: NASA (EO)\n");
-    printf("       Source 3: NASA (APOD)\n");
-    printf("       Source 4: SpaceX\n");
+    printf("       For a full list of sources, see the GitHub page at https://github.com/JeffResc/Meteoroid/\n");
     printf("       Choose one source number to use at a time\n");
     printf("\n");
     printf("       -l\tSet only the lock screen wallpaper\n");
@@ -93,20 +90,32 @@ int main(int argc, char *argv[], char *envp[]) {
     int location;
     bool parallax = false;
 
+    int args = 0;
     for (int i = 1; i < argc; i++) { //parse the arguments
         if (!strcmp(argv[i], "-s")) {
           source = atoi(argv[i + 1]);
+          if (source > 0 && source <= 10) {
+            args++;
+          }
         } else if (!strcmp(argv[i], "-l")) {
           location = 1;
+          args++;
         } else if (!strcmp(argv[i], "-h")) {
           location = 2;
+          args++;
         } else if (!strcmp(argv[i], "-b")) {
           location = 3;
+          args++;
         } else if (!strcmp(argv[i], "-p")) {
           parallax = true;
         }
     }
 
-    setWallpaper(source, location, parallax);
+    if (args == 2) {
+      setWallpaper(source, location, parallax);
+    } else {
+      displayUsage();
+      return 1;
+    }
     return 0;
 }
