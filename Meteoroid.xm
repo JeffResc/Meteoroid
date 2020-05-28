@@ -111,9 +111,6 @@
       if(LD_DEBUG) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"HH:mm:ss"];
-        NSLog(@"Timer - %@", timer);
-        NSLog(@"Timer isValid - %d", [timer isValid]);
-        NSLog(@"fireTime - %@", [dateFormatter stringFromDate:fireTime]);
       }
     }
   }
@@ -140,7 +137,6 @@
     if(LD_DEBUG) {
       NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
       [dateFormatter setDateFormat:@"HH:mm:ss"];
-      NSLog(@"fireTime - %@ || Current Date - %@ || fireTimeGate - %@", [dateFormatter stringFromDate:fireTime], [dateFormatter stringFromDate:currentDate], [dateFormatter stringFromDate:fireTimeGate]);
     }
   }
 %end
@@ -164,12 +160,7 @@ static void runUpdateCommand() {
   }
 
   NSTask *task = [[NSTask alloc] init];
-  NSLog(@"cmd-wallpaperMode: %d", wallpaperMode);
-  NSLog(@"cmd-parallax: %d", parallax);
-  NSLog(@"cmd-imageSource: %d", imageSource);
-  NSLog(@"cmd-timerEnabled: %d", timerEnabled);
   [task setLaunchPath:@"/usr/bin/meteoroidcli"];
-  NSLog(@"/usr/bin/meteoroidcli -s %@ -%c", [NSString stringWithFormat:@"%d", imageSource], locationFlag);
   if (parallax) {
     [task setArguments:[NSArray arrayWithObjects:@"-s", [NSString stringWithFormat:@"%d", imageSource], [NSString stringWithFormat:@"-%c", locationFlag], @"-p", nil]];
   } else {
@@ -212,10 +203,6 @@ static void loadPrefs() {
   parallax = [([file objectForKey:@"parallax"] ?: @(NO)) boolValue];
   imageSource = [([file objectForKey:@"imageSource"] ?: @(0)) intValue];
   timerEnabled = [([file objectForKey:@"timerEnabled"] ?: @(NO)) boolValue];
-  NSLog(@"wallpaperMode: %d", wallpaperMode);
-  NSLog(@"parallax: %d", parallax);
-  NSLog(@"imageSource: %d", imageSource);
-  NSLog(@"timerEnabled: %d", timerEnabled);
   // Saved data
   NSMutableDictionary *saveddata = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/User/Library/Preferences/com.jeffresc.meteoroidsaveddata.plist"];
   if(!saveddata || [saveddata count] < 4) {
