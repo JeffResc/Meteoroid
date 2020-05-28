@@ -38,13 +38,13 @@ meteoroidcli --help
 ```
 ### Command Options
 This command line interface comes with several options as depicted below:
-| Option | Description                        | Requires Argument?                        | Required?                                                |
-|--------|------------------------------------|-------------------------------------------|----------------------------------------------------------|
-| -s     | Set the image source               | Yes, the image source as an integer (1-4) | Yes                                                      |
-| -l     | Set only the lock screen wallpaper | No                                        | No, but must use -h or -b instead, but not more than one |
-| -h     | Set only the home screen wallpaper | No                                        | No, but must use -l or -b instead, but not more than one |
-| -b     | Set both wallpapers                | No                                        | No, but must use -l or -h instead, but not more than one |
-| -p     | Enable parallax                    | No                                        | No, off by default                                       |
+| Option | Description                        | Requires Argument?                         | Required?                                                |
+|--------|------------------------------------|--------------------------------------------|----------------------------------------------------------|
+| -s     | Set the image source               | Yes, the image source as an integer (1-10) | Yes                                                      |
+| -l     | Set only the lock screen wallpaper | No                                         | No, but must use -h or -b instead, but not more than one |
+| -h     | Set only the home screen wallpaper | No                                         | No, but must use -l or -b instead, but not more than one |
+| -b     | Set both wallpapers                | No                                         | No, but must use -l or -h instead, but not more than one |
+| -p     | Enable parallax                    | No                                         | No, off by default                                       |
 ### Command Examples
 Set the wallpaper from the "NASA (Image of the Day)" source to both the lockscreen and homescreen
 ```bash
