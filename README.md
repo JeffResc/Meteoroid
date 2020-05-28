@@ -1,6 +1,6 @@
 # Meteoroid
-Set your wallpaper from various NASA sources.
-[View the video demo](https://imgur.com/a/JU8YzfV).
+Set your wallpaper from various space sources.
+[View the video demo](https://youtu.be/4zlm2yrzdrQ).
 
 [![Banner](https://github.com/JeffResc/Meteoroid/raw/master/_assets/Banners/BannerWithText.png)](#)
 
