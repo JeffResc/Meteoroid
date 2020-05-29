@@ -70,6 +70,10 @@
 	[HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=Meteoroid"]];
 }
 
+- (void)Website_Link {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://jeffresc.dev/"]];
+}
+
 - (void)NASA_IOTD_Link {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.nasa.gov/multimedia/imagegallery/iotd.html"]];
 }
